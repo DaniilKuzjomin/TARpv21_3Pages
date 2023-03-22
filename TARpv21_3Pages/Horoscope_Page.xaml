@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TARpv21_3Pages.Horoscope_Page">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Vali sünnikuupäev:" />
+            <DatePicker x:Name="birthdatePicker" DateSelected="OnDateSelected" />
+            <Image x:Name="horoscopeImage" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="horoscopeLabel" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
