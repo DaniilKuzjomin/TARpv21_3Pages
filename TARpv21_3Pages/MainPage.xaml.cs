@@ -12,8 +12,8 @@ namespace TARpv21_3Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        List<ContentPage> contentPages = new List<ContentPage>() { new Horoscope_Page(), new Ajaplaan_Page() };
-        List<string> tekstid = new List<string> { "Horoscope Page", "Ajaplaan Page" };
+        List<ContentPage> contentPages = new List<ContentPage>() { new Horoscope_Page(), new Ajaplaan_Page(), new OmaPage() };
+        List<string> tekstid = new List<string> { "Horoscope Page", "Ajaplaan Page", "Oma Page" };
         public MainPage()
         {
             StackLayout st = new StackLayout
