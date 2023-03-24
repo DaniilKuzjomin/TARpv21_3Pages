@@ -6,8 +6,8 @@
         <StackLayout>
             <Label Text="Vali sünnikuupäev:" />
             <DatePicker x:Name="birthdatePicker" DateSelected="OnDateSelected" />
-            <Image x:Name="horoscopeImage" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Label x:Name="horoscopeLabel" />
+            <Image x:Name="img" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="lbl" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

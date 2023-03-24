@@ -6,8 +6,8 @@
         <StackLayout>
             <Label Text="Vali aeg:" />
             <TimePicker x:Name="timePicker" />
-            <Label x:Name="actionLabel" />
-            <Image x:Name="tegevusImage" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="lbl" />
+            <Image x:Name="img" HorizontalOptions="Center" VerticalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

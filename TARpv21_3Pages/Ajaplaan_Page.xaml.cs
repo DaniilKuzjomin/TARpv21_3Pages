@@ -13,85 +13,46 @@ namespace TARpv21_3Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Ajaplaan_Page : ContentPage
     {
+        private Dictionary<TimeSpan, (string, string)> _timeActions;
+
         public Ajaplaan_Page()
         {
             InitializeComponent();
 
-            timePicker.PropertyChanged += OnTimePickerPropertyChanged;
+            timePicker.PropertyChanged += ChangedTime;
+
+            _timeActions = new Dictionary<TimeSpan, (string, string)>
+            {
+                { new TimeSpan(0, 0, 0), ("Magamine", "sleeping.jpg") },
+                { new TimeSpan(7, 30, 0), ("Ärkamine", "awaking.png") },
+                { new TimeSpan(8, 0, 0), ("Kutsekooli sõitmine", "bus.png") },
+                { new TimeSpan(8, 30, 0), ("Õppimine", "books.png") },
+                { new TimeSpan(14, 0, 0), ("Õppimine", "books.png") },
+                { new TimeSpan(15, 0, 0), ("Jõusaali sõitmine", "car.png") },
+                { new TimeSpan(16, 0, 0), ("Sport Jõusaalis", "gym.png") },
+                { new TimeSpan(17, 0, 0), ("Sport jõusaalis", "gym2.png") },
+                { new TimeSpan(18, 0, 0), ("Kodu sõitmine", "walk.png") },
+                { new TimeSpan(19, 0, 0), ("Programeerimine", "programming.png") },
+                { new TimeSpan(20, 0, 0), ("Toiduvalmistamine", "cooking.jpg") },
+                { new TimeSpan(23, 59, 59), ("Puhkamine", "rest.jpg") }
+            };
         }
 
-        private void OnTimePickerPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void ChangedTime(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "Time")
             {
-                UpdateActionLabel();
+                MuutaLI();
             }
         }
 
-        private void UpdateActionLabel()
+        private void MuutaLI()
         {
             TimeSpan selectedTime = timePicker.Time;
+            (string action, string image) = _timeActions[selectedTime];
 
-            if (selectedTime < new TimeSpan(2, 0, 0))
-            {
-                actionLabel.Text = "Magamine";
-                tegevusImage.Source = "sleeping.jpg";
-            }
-            else if (selectedTime < new TimeSpan(4, 0, 0))
-            {
-                actionLabel.Text = "Ärkamine";
-                tegevusImage.Source = "awaking.png";
-            }
-            else if (selectedTime < new TimeSpan(6, 0, 0))
-            {
-                actionLabel.Text = "Kutsekooli sõitmine";
-                tegevusImage.Source = "bus.png";
-            }
-            else if (selectedTime < new TimeSpan(8, 0, 0))
-            {
-                actionLabel.Text = "Õppimine";
-                tegevusImage.Source = "books.png";
-            }
-            else if (selectedTime < new TimeSpan(10, 0, 0))
-            {
-                actionLabel.Text = "Õppimine";
-                tegevusImage.Source = "books.png";
-            }
-            else if (selectedTime < new TimeSpan(12, 0, 0))
-            {
-                actionLabel.Text = "Jõusaali sõitmine";
-                tegevusImage.Source = "car.png";
-            }
-            else if (selectedTime < new TimeSpan(14, 0, 0))
-            {
-                actionLabel.Text = "Sport Jõusaalis";
-                tegevusImage.Source = "gym.png";
-            }
-            else if (selectedTime < new TimeSpan(16, 0, 0))
-            {
-                actionLabel.Text = "Sport jõusaalis";
-                tegevusImage.Source = "gym2.png";
-            }
-            else if (selectedTime < new TimeSpan(18, 0, 0))
-            {
-                actionLabel.Text = "Kodu sõitmine";
-                tegevusImage.Source = "walk.png";
-            }
-            else if (selectedTime < new TimeSpan(20, 0, 0))
-            {
-                actionLabel.Text = "Programeerimine";
-                tegevusImage.Source = "programming.png";
-            }
-            else if (selectedTime < new TimeSpan(22, 0, 0))
-            {
-                actionLabel.Text = "Toiduvalmistamine";
-                tegevusImage.Source = "cooking.jpg";
-            }
-            else
-            {
-                actionLabel.Text = "Puhkamine";
-                tegevusImage.Source = "rest.jpg";
-            }
+            actionLabel.Text = action;
+            tegevusImage.Source = image;
         }
     }
 }

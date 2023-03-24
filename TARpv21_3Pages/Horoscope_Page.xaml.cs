@@ -10,15 +10,15 @@ namespace TARpv21_3Pages
             InitializeComponent();
         }
 
-        private void OnDateSelected(object sender, DateChangedEventArgs e)
+        private void KuupaevValitud(object sender, DateChangedEventArgs e)
         {
             DateTime birthdate = e.NewDate;
-            string horoscope = CalculateHoroscope(birthdate);
-            horoscopeLabel.Text = $"Sinu sodiaagimärk: {horoscope}";
+            string horoscope = Horoskoop(birthdate);
+            lbl.Text = $"Sinu sodiaagimärk: {horoscope}";
         }
 
 
-        private string CalculateHoroscope(DateTime birthdate)
+        private string Horoskoop(DateTime birthdate)
         {
             string[] signs = { "Jäär", "Sõnn", "Kaksikud", "Vähk", "Lõvi", "Neitsi", "Kaalud", "Skorpion", "Ambur", "Kaljukits", "Veevalaja", "Kalad" };
             int[] cutoffDays = { 20, 21, 21, 21, 22, 22, 23, 23, 22, 22, 21, 20 };
